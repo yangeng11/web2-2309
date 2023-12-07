@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>tabs형 패널</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        /* 브라우저 기본 설정값 리셋 */
+
+        body {
+            margin: 20px;
+            padding: 20px;
+            text-align: left;
+            color: #fff;
+            background: #f1f1f1;
+        }
+
+        nav {
+            margin-top: 25px;
+        }
+        /* nav 컨텐츠 위치 지정 */
+
+        nav ul {
+            position: relative;
+            float: none;
+            margin: 0;
+            width: 650px;
+            text-align: left;
+            list-style: none;
+        }
+
+        nav li {
+            display: block;
+            float: left;
+        }
+
+        nav li input[type='radio'] {
+            position: absolute;
+            left: -9999px;
+        }
+
+        nav ul label {
+            top: 8px;
+            padding: 12px 18px;
+            position: relative;
+            background: #ccc;
+            cursor: pointer;
+            border-radius: 6px 6px 0 0;
+            transform: 0.3s;
+        }
+
+        nav label:hover {
+            background: #8ac007;
+        }
+
+        nav .content {
+            display: none;
+            position: absolute;
+            left: 0px;
+            top: 25px;
+            padding: 25px;
+            width: 100%;
+            overflow: hidden;
+            line-height: 25px;
+            font-size: 14px;
+            border-radius: 0 9px 0 0;
+            background: #8ac007;
+        }
+
+        nav input[type='radio']:checked + label {
+            /* +는 인접형제 부호이다. radio를 기준으로 다음 컨텐츠를 선택한다는 뜻 */
+            /* input의 타입은 body에 작성한 타입을 그대로 기입하면 된다. */
+            /* checked는 마우스로 해당 영역을 선택했을때 반영한다는 뜻 */
+            top: 1px;
+            padding-top: 18px;
+            background: #8ac007;
+        }
+
+        nav input[type='radio']:checked ~ .content{
+            /* ~는 radio 이후에 있는 해당 컨텐츠를 모두 선택한다는 뜻 */
+            display: block;
+        }
+
+    </style>
+</head>
+<body>
+    <nav>
+        <ul>
+            <li>
+                <input type="radio" name="tabs" id="tab1" checked>
+                <!-- checked가 요소가 기입되어 있는 작성이 우선 선택되어 보여지기 때문에 첫번째로 보여지고 싶은곳에 checked를 입력한다 -->
+                <label for="tab1">learn Javascript</label>
+                <!-- label의 for과 type의 id의 값이 동일해야한다. -->
+                <div id="tab-content" class="content">
+                    <p><b>Javascript</b> <br> 여기는 tab1</p>
+                </div>
+            </li>
+            <li>
+                <input type="radio" name="tabs" id="tab2">
+                <label for="tab2">learn JQuery</label>
+                <!-- label의 for과 type의 id의 값이 동일해야한다. -->
+                <div id="tab-content2" class="content">
+                    <p><b>JQuery</b> <br>여기는 tab2</p>
+                </div>
+            </li>
+        </ul>
+    </nav>
+</body>
+</html>
